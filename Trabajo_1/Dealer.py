@@ -35,9 +35,29 @@ def insertion_sort(lista):
         print(f"Lista actual: {lista}")
     return lista
 
-Generar_mazo_noOrden= generar_mazo()
-print(Generar_mazo_noOrden)
-print(f"Numero de cartas en el mazo: {len(Generar_mazo_noOrden)}")
+#-------- Organizar por Tipo de cartas ---------------
 
-Mazo_Ordenado = insertion_sort(Generar_mazo_noOrden)
-print(f"\nMazo ordenado por numero:{Mazo_Ordenado}")
+def Clasificar_Carta(mazo):
+    Corazon=[]
+    Trevol=[]
+    Diamante=[]
+    Picas=[]
+
+    for carta in mazo:
+
+        Tipo = carta[-1]
+        if Tipo == "C":
+            Corazon.append(carta)
+        elif Tipo == "T":
+            Trevol.append(carta)
+        elif Tipo == "D":
+            Diamante.append(carta)
+        elif Tipo == "P":
+            Picas.append(carta)
+
+    Corazon=insertion_sort(Corazon)
+    Trevol=insertion_sort(Trevol)
+    Diamante=insertion_sort(Diamante)
+    Picas=insertion_sort(Picas)
+
+    return Corazon,Trevol,Diamante,Picas
