@@ -4,7 +4,7 @@ def obtener_pais():
     url = 'https://restcountries.com/v3.1/region/europe'
     response = requests.get(url)
     if response.status_code == 200 :
-        return response.json
+        return response.json()
     elif response.status_code == 404 :
         print("Recurso no encontrado error (404). Revisar la URL")
         return []
@@ -17,23 +17,23 @@ def obtener_pais():
     
 def busqueda_lineal(paises, nombre):
     for pais in paises:
-        if pais["name"]["common"].lower()==nombre.lower():
+        if pais["name"]["common"].lower() == nombre.lower():
             return pais
     return None
 
 def busqueda_binaria(paises, nombre):
     izquierda = 0
-    derecha = len(paises) -1
+    derecha = len(paises) - 1
+    nombre = nombre.lower()
 
     while izquierda <=derecha:
         medio = (izquierda+derecha) //2
-        pais_medio = ["name"]["common"].lower()
+        pais_medio = paises[medio]["name"]["common"].lower()
 
         if pais_medio == nombre.lower():
             return paises[medio]
         elif pais_medio < nombre.lower():
-            izquierda = medio +1 
+            izquierda = medio + 1 
         else:
-            derecha = medio -1
+            derecha = medio - 1
     return None
-
