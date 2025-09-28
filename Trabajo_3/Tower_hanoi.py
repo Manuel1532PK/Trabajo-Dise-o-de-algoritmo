@@ -1,39 +1,39 @@
-def display_Tower(Tower):
-    print("A:", Tower['A'])
-    print("B:", Tower['B'])
-    print("C:", Tower['C'])
+def display_tower(tower):
+    print("A:", tower['A'])
+    print("B:", tower['B'])
+    print("C:", tower['C'])
     print("-" * 20)
 
 
-def mover_disco(origin, destiny, Tower):
+def move_disk(origin, destiny, tower):
     # Verifica qué torre tiene el disco más pequeño disponible
-    if not Tower[origin]:
-        Tower[origin].append(Tower[destiny].pop())
+    if not tower[origin]:
+        tower[origin].append(tower[destiny].pop())
         print(f"Mover disco de {destiny} -> {origin}")
 
-    elif not Tower[destiny]:
-        Tower[destiny].append(Tower[origin].pop())
+    elif not tower[destiny]:
+        tower[destiny].append(tower[origin].pop())
         print(f"Mover disco de {origin} -> {destiny}")
 
-    elif Tower[origin][-1] < Tower[destiny][-1]:
-        Tower[destiny].append(Tower[origin].pop())
+    elif tower[origin][-1] < tower[destiny][-1]:
+        tower[destiny].append(tower[origin].pop())
         print(f"Mover disco de {origin} -> {destiny}")
 
     else:
-        Tower[origin].append(Tower[destiny].pop())
+        tower[origin].append(tower[destiny].pop())
         print(f"Mover disco de {destiny} -> {origin}")
 
-    display_Tower(Tower)
+    display_tower(tower)
 
 
-def torre_hanoi_iterativa(n):
-    Tower = {
+def tower_hanoi_iterativa(n):
+    tower = {
         'A': list(reversed(range(1, n + 1))),  # Torre origen
         'B': [],  # Torre auxiliar
         'C': []   # Torre destino
     }
 
-    display_Tower(Tower)
+    display_tower(tower)
 
     # Si el número de discos es par, intercambiamos destino y auxiliar
     if n % 2 == 0:
@@ -46,13 +46,13 @@ def torre_hanoi_iterativa(n):
 
     for i in range(1, num_movimientos + 1):
         if i % 3 == 1:
-            mover_disco(origin, destiny, Tower)
+            move_disk(origin, destiny, tower)
         elif i % 3 == 2:
-            mover_disco(origin, auxiliary, Tower)
+            move_disk(origin, auxiliary, tower)
         elif i % 3 == 0:
-            mover_disco(auxiliary, destiny, Tower)
+            move_disk(auxiliary, destiny, tower)
 
 
 # Ejecutar con los discos que desees
 discos = int(input("Cuántos discos quieres usar en la Torre de Hanoi? "))
-torre_hanoi_iterativa(discos)
+tower_hanoi_iterativa(discos)
