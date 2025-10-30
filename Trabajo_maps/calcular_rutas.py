@@ -11,7 +11,7 @@ class CalculadorRutas:
         print("     RUTAS ÓPTIMAS INDIVIDUALES")
         
         for destino in destinos:
-            print(f"\n---Ruta: {origen} → {destino} ---")
+            print(f"\n---Ruta: {origen} → {destino}  ---")
             
             # Usar Dijkstra para encontrar la ruta más corta
             ruta, distancia = self.grafo.dijkstra(origen, destino)
