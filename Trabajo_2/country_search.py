@@ -5,7 +5,7 @@ paises = lib_Request.obtener_pais()
 paises_ordenados = sorted(paises, key=lambda x: x["name"]["common"])
 
 if paises:    
-    print("=== Búsqueda de países de Europa ===")
+    print("Búsqueda de países de Europa")
     print("1. Búsqueda Lineal")
     print("2. Búsqueda Binaria")
         
