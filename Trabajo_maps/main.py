@@ -72,7 +72,7 @@ def construir_grafo_completo(grafo, mapa_api, ubicaciones):
 
 def main():
     # Configurar API Key
-    api_key = input("Ingrese su API Key de Google Maps: ").strip()
+    api_key = "AIzaSyDiCxWwgTBVaVJxhkWp_OZt-70z8Fj5XSE"
     
     if not api_key:
         print("Error: Se requiere una API Key válida")
